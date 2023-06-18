@@ -1,6 +1,8 @@
 package com.luv2code.library.springbootlibrary.config;
 
 import com.luv2code.library.springbootlibrary.entity.Book;
+import com.luv2code.library.springbootlibrary.entity.Message;
+import com.luv2code.library.springbootlibrary.entity.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -10,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
 
-    private String theAllowOrigin = "http://localhost:3000";  //allowing frontend string port
+    private String theAllowOrigin = "https://localhost:3000";  //allowing frontend string port
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors){
@@ -22,8 +24,12 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
         };
 
         config.exposeIdsFor(Book.class);  //gives ID'S for the get request as well in return data
+        config.exposeIdsFor(Review.class);
+        config.exposeIdsFor(Message.class);
 
         disableHttpMethods(Book.class, config, theUnsuportedActions);
+        disableHttpMethods(Review.class, config, theUnsuportedActions);
+        disableHttpMethods(Message.class, config, theUnsuportedActions);
 
         /* Configure CORS Mapping */
         cors.addMapping(config.getBasePath()+"/**")  //This line configures the mapping for which CORS should be applied. cors is a CorsRegistry object that is used to register mappings for CORS configuration. config.getBasePath() retrieves the base path of the application, and "/**" maps the configuration to all endpoints under the base path.
