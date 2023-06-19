@@ -7,7 +7,8 @@ import com.luv2code.library.springbootlibrary.utils.ExtractJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("https://localhost:3000")
+// @CrossOrigin("https://localhost:3000")
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/api/messages")
 public class MessagesController {
@@ -26,10 +27,11 @@ public class MessagesController {
     }
 
     @PutMapping("/secure/admin/message")
-    public void putMessage(@RequestHeader(value = "Authorization") String token, @RequestBody AdminQuestionRequest adminQuestionRequest) throws Exception {
+    public void putMessage(@RequestHeader(value = "Authorization") String token,
+            @RequestBody AdminQuestionRequest adminQuestionRequest) throws Exception {
         String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
         String admin = ExtractJWT.payloadJWTExtraction(token, "\"userType\"");
-        if(admin == null || !admin.equals("admin")){
+        if (admin == null || !admin.equals("admin")) {
             throw new Exception("Administration Page Only.");
         }
         messagesService.putMessage(adminQuestionRequest, userEmail);
