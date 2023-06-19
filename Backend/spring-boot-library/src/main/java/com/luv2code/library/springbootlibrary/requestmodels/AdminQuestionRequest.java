@@ -8,4 +8,5 @@ public class AdminQuestionRequest {
     private Long id;
 
     private String response;
+
 }
