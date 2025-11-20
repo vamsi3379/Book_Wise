@@ -1,0 +1,121 @@
+.fleet-section {
+    padding: 120px 0;
+    background-color: var(--color-bg-light);
+}
+
+.fleet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.fleet-desc {
+    color: var(--color-text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.fleet-desc strong {
+    color: var(--color-primary);
+}
+
+.fleet-features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.fleet-feature-item {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feature-icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(234, 67, 53, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-secondary);
+    transition: all 0.3s ease;
+}
+
+.fleet-feature-item:hover .feature-icon-box {
+    background: var(--color-secondary);
+    color: #ffffff;
+    transform: rotateY(180deg);
+}
+
+.fleet-feature-item h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-main);
+}
+
+.fleet-feature-item p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+.fleet-image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.fleet-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.tech-overlay {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    padding: 20px 30px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    box-shadow: var(--shadow-md);
+}
+
+.tech-stat {
+    text-align: center;
+}
+
+.tech-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.tech-label {
+    font-size: 0.8rem;
+    color: var(--color-text-main);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 968px) {
+    .fleet-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .fleet-features-grid {
+        grid-template-columns: 1fr;
+    }
+}
